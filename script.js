@@ -126,13 +126,23 @@ class LinkedList {
 
   getTail() {
     let current = this.head;
-    let count = 0;
 
-    while (current) {
-      count++;
+    while (current.next != null) {
       current = current.next;
     }
     console.log("this is the tail", current);
+  }
+
+  pop() {
+    let current = this.head;
+    let count = 0;
+
+    while (current.next != null) {
+      current = current.next;
+      count++;
+    }
+
+    this.removeAt(count);
   }
 
   printList() {
@@ -143,6 +153,17 @@ class LinkedList {
       current = current.next;
     }
   }
+
+  toString() {
+    let current = this.head;
+    let string;
+
+    while (current) {
+      string = string + "-->" + JSON.stringify(current);
+      current = current.next;
+    }
+    console.log(string);
+  }
 }
 
 const ll = new LinkedList();
@@ -152,12 +173,14 @@ ll.append(200);
 ll.append(300);
 ll.appendEnd(400);
 ll.insertAt(500, 2);
-ggggggggggggggit oush
 
 ll.removeAt(32);
 ll.getHead();
 ll.getSize();
 ll.printList();
 ll.getTail();
+ll.pop();
+ll.printList();
+ll.toString();
 
 // ll.getAt(2);
